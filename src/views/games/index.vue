@@ -1,10 +1,12 @@
 <template>
   <div class="container">
-    <h1>Pessoas</h1>
-    <div v-if="!persons">
+    <h1>Games</h1>
+    <div v-if="!games">
       <app-loading/>
     </div>
-    {{persons}}
+    <div>
+      {{games}}
+    </div>
   </div>
 </template>
 
@@ -12,22 +14,22 @@
 import axios from 'axios';
 
 export default {
-  name: 'HomeView',
+  name: 'GamesView',
   data() {
     return {
-      persons: null,
+      games: null,
     };
   },
   mounted() {
-    this.getPerson();
+    this.getGames();
   },
   methods: {
-    getPerson() {
-      const url = 'http://localhost:3000/persons';
+    getGames() {
+      const url = 'http://localhost:3000/games';
       axios.get(url)
         .then((response) => {
           setTimeout(() => {
-            this.persons = response.data;
+            this.games = response.data;
           }, 1500);
         }).catch((err) => {
           console.error(err);
