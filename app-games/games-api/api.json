@@ -1,0 +1,29 @@
+{
+  "persons": [
+    {
+      "id": 1,
+      "name": "Lucas Leoni",
+      "email": "20201107@ielusc.br",
+      "age": 22
+    },
+    {
+      "id": 2,
+      "name": "Marcos Leoni",
+      "email": "marcos.leoni@gmail.com",
+      "age": 54
+    },
+    {
+      "id": 3,
+      "name": "Luciana Leoni",
+      "email": "luciana.leoni@gmail.com",
+      "age": 50
+    }
+  ],
+  "games": {
+    "id": 12,
+    "name": "Halo 4",
+    "category": "Action",
+    "year": "2016",
+    "price": 200
+  }
+}
