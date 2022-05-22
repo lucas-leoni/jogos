@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import PersonViewDetails from '@/components/PersonId.vue';
 import HomeView from '../views/HomeView.vue';
 import GamesView from '../views/games/index.vue';
 
@@ -12,9 +13,14 @@ const routes = [
     component: HomeView,
   },
   {
-    path: '/jogos',
-    name: 'jogos',
+    path: '/games',
+    name: 'games',
     component: GamesView,
+  },
+  {
+    path: '/person/:id',
+    name: 'PersonDetails',
+    component: PersonViewDetails,
   },
   {
     path: '/about',

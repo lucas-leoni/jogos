@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <h1>Pessoas</h1>
-    <div v-if="!persons">
-      <app-loading />
-    </div>
+    <h1>Pessoa {{ person.id }}</h1>
     <table class="table">
       <thead>
         <tr>
@@ -11,39 +8,27 @@
           <th scope="col">Name</th>
           <th scope="col">Email</th>
           <th scope="col">Age</th>
-          <th scope="col">Action</th>
         </tr>
       </thead>
-      <tbody v-for="person in persons" :key="person.id">
+      <tbody>
         <tr>
           <th scope="row">{{ person.id }}</th>
           <td>{{ person.name }}</td>
           <td>{{ person.email }}</td>
           <td>{{ person.age }}</td>
-          <td>
-            <button type="button" class="btn btn-primary">
-              <router-link
-                :to="{ name: 'PersonDetails', params: { id : person.id }}"
-                class="text-white text-decoration-none"
-                >
-                Action
-              </router-link>
-            </button>
-          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </template>
-
 <script>
 import axios from 'axios';
 
 export default {
-  name: 'HomeView',
+  name: 'PersonViewDetails',
   data() {
     return {
-      persons: null,
+      person: '',
     };
   },
   mounted() {
@@ -51,13 +36,12 @@ export default {
   },
   methods: {
     getPerson() {
-      const url = 'http://localhost:3000/persons';
+      const { id } = this.$route.params;
+      const url = `http://localhost:3000/persons/${id}`;
       axios
         .get(url)
         .then((response) => {
-          setTimeout(() => {
-            this.persons = response.data;
-          }, 1500);
+          this.person = response.data;
         })
         .catch((err) => {
           console.error(err);
