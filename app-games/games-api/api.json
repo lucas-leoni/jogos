@@ -19,11 +19,20 @@
       "age": 50
     }
   ],
-  "games": {
-    "id": 12,
-    "name": "Halo 4",
-    "category": "Action",
-    "year": "2016",
-    "price": 200
-  }
+  "games": [
+    {
+      "id": 1,
+      "name": "Halo 4",
+      "category": "Action",
+      "year": "2016",
+      "price": 200
+    },
+    {
+      "id": 2,
+      "name": "GTA V",
+      "category": "Action",
+      "year": "2013",
+      "price": 200
+    }
+  ]
 }

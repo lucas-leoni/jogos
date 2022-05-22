@@ -1,38 +1,38 @@
 <template>
   <div class="container">
-    <h1>Games</h1>
-    <div v-if="!games">
-      <app-loading/>
+    <h1>Pessoas</h1>
+    <div v-if="!persons">
+      <app-loading />
     </div>
-    <Table :games="games" />
+    <Table :persons="persons" />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
-import Table from '@/views/games/Table.vue';
+import Table from '@/views/persons/Table.vue';
 
 export default {
-  name: 'GamesView',
+  name: 'HomeView',
   components: {
     Table,
   },
   data() {
     return {
-      games: null,
+      persons: null,
     };
   },
   mounted() {
-    this.getGames();
+    this.getPersons();
   },
   methods: {
-    getGames() {
-      const url = 'http://localhost:3000/games';
+    getPersons() {
+      const url = 'http://localhost:3000/persons';
       axios
         .get(url)
         .then((response) => {
           setTimeout(() => {
-            this.games = response.data;
+            this.persons = response.data;
           }, 1000);
         })
         .catch((err) => {

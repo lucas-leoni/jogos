@@ -1,31 +1,21 @@
 <template>
   <div class="container">
     <h1>Pessoa {{ person.id }}</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th scope="col">Age</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">{{ person.id }}</th>
-          <td>{{ person.name }}</td>
-          <td>{{ person.email }}</td>
-          <td>{{ person.age }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div v-if="!person">
+      <app-loading/>
+    </div>
+    <Table :person="person" />
   </div>
 </template>
 <script>
 import axios from 'axios';
+import Table from '@/views/person/Table.vue';
 
 export default {
   name: 'PersonViewDetails',
+  components: {
+    Table,
+  },
   data() {
     return {
       person: '',
@@ -41,7 +31,9 @@ export default {
       axios
         .get(url)
         .then((response) => {
-          this.person = response.data;
+          setTimeout(() => {
+            this.person = response.data;
+          }, 1000);
         })
         .catch((err) => {
           console.error(err);

@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import PersonViewDetails from '@/components/PersonId.vue';
-import HomeView from '../views/HomeView.vue';
-import GamesView from '../views/games/index.vue';
+import PersonView from '@/views/persons/index.vue';
+import GamesView from '@/views/games/index.vue';
+import PersonViewDetails from '@/views/person/PersonId.vue';
+import GameViewDetails from '@/views/game/GameId.vue';
 
 Vue.use(VueRouter);
 
@@ -10,7 +11,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: PersonView,
   },
   {
     path: '/games',
@@ -23,12 +24,9 @@ const routes = [
     component: PersonViewDetails,
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
+    path: '/game/:id',
+    name: 'GameDetails',
+    component: GameViewDetails,
   },
 ];
 
